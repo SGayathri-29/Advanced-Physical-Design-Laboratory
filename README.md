@@ -2,6 +2,12 @@
 
 ##  day1
 
+### Inception Of Opensource EDA ,OpenLANE ,sky130 PDK
+
+## config.tcl file
+![image](https://user-images.githubusercontent.com/86550945/124233183-36d87280-db30-11eb-9889-17dfaff181a8.png)
+
+
 ##every design contains...
 ![image](https://user-images.githubusercontent.com/86550945/124230974-55893a00-db2d-11eb-8502-7620b848353d.png)
 ![image](https://user-images.githubusercontent.com/86550945/124231099-79e51680-db2d-11eb-8e95-575ab573a9ac.png)
@@ -26,5 +32,14 @@
 
 
 ##Synthesis is complete...![image](https://user-images.githubusercontent.com/86550945/124227549-7dc26a00-db28-11eb-8769-85caa3b94f13.png)
+
+## dff stats
+![image](https://user-images.githubusercontent.com/86550945/124233688-b8300500-db30-11eb-83df-340ec6c8ed25.png)
+## timing report
+![image](https://user-images.githubusercontent.com/86550945/124233815-de55a500-db30-11eb-99a6-585f96ce5401.png)
+## slew report
+![image](https://user-images.githubusercontent.com/86550945/124233893-fa594680-db30-11eb-917e-548e6c8b5594.png)
+
+
 
 
