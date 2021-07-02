@@ -1,8 +1,27 @@
-# Advanced-Physical-Design-Laboratory
+# **Advanced-Physical-Design-Workshop-using-openlane**
+![image](https://user-images.githubusercontent.com/86550945/124319708-425f8400-db98-11eb-8584-fb76342d90d7.png)
 
-##  day1
 
-### Inception Of Opensource EDA ,OpenLANE ,sky130 PDK
+## ABOUT THIS WORKSHOP
+
+   This workshop is about the physical design flow right from the RTL netlist to the GDS II and this is done with the help of opensource software **openlane**.
+   The tool uses the Google Skywater 130nm PDK files for its implementation.
+---
+
+##  **Day1**  -  *Foundation Of Opensource EDA,openLANE and sky130 PDK*
+##  **Day2**  -  *Floor plan and Library cells*
+##  **Day3**  -  *Design Layout cell using Magic and ngspice characterisation*
+##  **Day4**  -  *Prelayout Timing Analysis and importance of good clock tree*
+##  **Day5**  -  *Final steps for RTL2GDS using tritonRoute and openSTA*
+
+# **DAY 1**
+
+## *Foundation Of Opensource EDA,openLANE and sky130 PDK*
+![image](https://user-images.githubusercontent.com/86550945/124321845-ff071480-db9b-11eb-991c-0a4d9d2d4c5b.png)
+
+
+
+### 
 
 ## config.tcl file
 ![image](https://user-images.githubusercontent.com/86550945/124233183-36d87280-db30-11eb-9889-17dfaff181a8.png)
