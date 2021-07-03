@@ -246,6 +246,29 @@ Tckn console that appears when we open our floorplan ,we can view the parameters
 
 ![image](https://user-images.githubusercontent.com/86550945/124355413-974dd980-dc2e-11eb-8de8-af94bed86b04.png)
 
+## **PLACEMENT**
+
+```run_placement```
+
+![image](https://user-images.githubusercontent.com/86550945/124356457-b307ae80-dc33-11eb-956e-8d91a1dc22e4.png)
+
+
+This command performs placement.
+
+ Successful completion of placement
+ 
+![image](https://user-images.githubusercontent.com/86550945/124356403-7b006b80-dc33-11eb-8750-2dc75def7c1a.png)
+
+After placement we can check the placement.def file and it looks like this:
+
+![image](https://user-images.githubusercontent.com/86550945/124356655-b8192d80-dc34-11eb-820a-717a03182820.png)
+
+
+# **DAY 3**
+## *Design Layout cell using Magic and ngspice characterisationK*
+
+
+
 
 
 
