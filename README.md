@@ -111,7 +111,7 @@ Opensource tools that are used in our flow and its definitions:
 
 ## **STARTING WITH OPENLANE**(invoking openlane)
 
-The following steps are performed for the invoking of openlane,every time we perform our physical design we are supposed to invoke openlane by performing the following steps
+The following steps are performed for the invoking of openlane,every time we perform our physical design we are supposed to invoke openlane by performing the following steps.We have to give ```docker``` command before starting .
 
 ```cd openLANE```
 
@@ -155,29 +155,45 @@ We can see that our design is mapped with the techfiles i.e abc libmapping is do
 
 ![image](https://user-images.githubusercontent.com/86550945/124230484-b06e6180-db2c-11eb-8fca-17fee5047f75.png)
 
+## **SYNTHESIS:
+
 ```run_synthesis```
+
+![image](https://user-images.githubusercontent.com/86550945/124353460-4a650580-dc24-11eb-8a61-4e104d7c81af.png)
+
  
  This command runs the synthesis of our design and this done with the help of yosys
  
 The Synthesis has been completed successfully
 
-[image](https://user-images.githubusercontent.com/86550945/124227549-7dc26a00-db28-11eb-8769-85caa3b94f13.png)
+![image](https://user-images.githubusercontent.com/86550945/124353802-623d8900-dc26-11eb-948a-bf954126cd69.png)
 
-After the entire synthesis is complete we can check our timing ,dff and slew and many reports in runs folder which is present in our design folder
 
-*dff stats*                                                                                            
+After the entire synthesis is complete we can check our timing ,dff and slew and many reports along with the netlist are present  in runs folder which is present in our design folder
+
+The synthesised netlist looks like this:
+![image](https://user-images.githubusercontent.com/86550945/124353609-2b1aa800-dc25-11eb-900e-6f1aae7059ad.png)
+
+We can find our reports in the reports folder which is shown below
+
+![image](https://user-images.githubusercontent.com/86550945/124353747-eba08b80-dc25-11eb-9080-7e540833fc68.png)
+
+
+## *dff stats*                                                                                            
 
 ![image](https://user-images.githubusercontent.com/86550945/124233688-b8300500-db30-11eb-83df-340ec6c8ed25.png)
 
- *timing report*
+## *timing report*
                                          
 
 ![image](https://user-images.githubusercontent.com/86550945/124233815-de55a500-db30-11eb-99a6-585f96ce5401.png)
 
- *slew report*
+## *slew report*
 
 
 ![image](https://user-images.githubusercontent.com/86550945/124233893-fa594680-db30-11eb-917e-548e6c8b5594.png)
+
+
 
 
 
