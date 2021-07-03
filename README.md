@@ -155,7 +155,7 @@ We can see that our design is mapped with the techfiles i.e abc libmapping is do
 
 ![image](https://user-images.githubusercontent.com/86550945/124230484-b06e6180-db2c-11eb-8fca-17fee5047f75.png)
 
-## **SYNTHESIS:
+## **SYNTHESIS** :
 
 ```run_synthesis```
 
@@ -183,12 +183,30 @@ We can find our reports in the reports folder which is shown below
 
 ![image](https://user-images.githubusercontent.com/86550945/124354024-851c6d00-dc27-11eb-969b-a95e56dfb222.png)
 
+     Flop ratio = No. of D flipflops 
+
+                ----------------------
+          
+                  Total No. Cells  
+              
+ Now,the flop ratio present in our design can be calculated as
+ 
+ S0 ,we see that our dflipdlop count is 1613
+
+ ![image](https://user-images.githubusercontent.com/86550945/124356204-68396700-dc32-11eb-8b9a-55bb78619f93.png)
+ 
+  and the no.of cells present in the design are 14876
+  
+ ![image](https://user-images.githubusercontent.com/86550945/124356259-adf62f80-dc32-11eb-92d1-fbb8e0f91971.png)
+ 
+ So by, dividing both we get, 1613/14876 =0.108 ,Hence our flop ratio is 0.108
+
 ## *timing report*
                                          
 
 ![image](https://user-images.githubusercontent.com/86550945/124233815-de55a500-db30-11eb-99a6-585f96ce5401.png)
 
-## *slew report*
+## *Max slew report*
 
 
 ![image](https://user-images.githubusercontent.com/86550945/124233893-fa594680-db30-11eb-917e-548e6c8b5594.png)
@@ -198,33 +216,29 @@ We can find our reports in the reports folder which is shown below
 
 ## *Floor Planning and Library Cells*
 
-CHIP FLOOR PLANNING CONSIDERATIONS
+CHIP FLOOR PLANNING CONSIDERATION:
 
-1.Definition of core and die width and height
-
-2.Locations of preplaced cells
-
-3.Placement of decoupled capacitors
-
-4.Pin placement
-
-5.Logical cell placement blockage
-
-Definition of core and die width and height: The core and die area depends on the dimensions of logic gates,hence the dimensions of the chip.The dimensions of the core and die is also dependent on the standard cell dimensions.The wires doesn't contribute to these dimensions.
-
-Utilization factor :Utilization factor is defined as the area occupied by the netlist defined circuit in the core.Itt can be calculated as
-
- Utilizaion factor = Area occupied by the netlist
-                    --------------------------------
-                     Total area of the core
-                     
+```1.Definition of core and die width and height```: The dimensions of the chip The core and die area depends on the dimensions of the basic logic gates present in the design.
 
 
-Aspect ratio : Aspect ratio can specify the shape of the chip. An aspect ratio of 1 discribes the chip as a square else it is a rectagle.Aspect ratio can be calcuated by
+*Utilization factor* : Utilization factor is given as the area occupied by the netlist defined circuit in the core.It is basically the ratio of the  Area occupied by the netlist and total area of the core.
 
- ![image](https://user-images.githubusercontent.com/86550945/124356204-68396700-dc32-11eb-8b9a-55bb78619f93.png)
+    Utilizaion factor =  Area occupied by the netlist   
  
- ![image](https://user-images.githubusercontent.com/86550945/124356259-adf62f80-dc32-11eb-92d1-fbb8e0f91971.png)
+                        -----------------------------
+                  
+                          Total area of the core 
+                         
+                     
+*Aspect ratio* : Aspect ratio basically tells us about the shape of the chip,If the ratio is 1 then it is considered as square shaped one,anything other that 1 is considered to be in the shape of a rectangle.
+
+    Aspect ratio =   Height 
+
+                    --------
+                 
+                     Width
+
+
 
 
 
