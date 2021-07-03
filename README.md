@@ -4,8 +4,7 @@
 
 ## ABOUT THIS WORKSHOP
 
-   This workshop is about the physical design flow right from the RTL netlist to the GDS II and this is done with the help of opensource software **openlane**.
-   The tool uses the Google Skywater 130nm PDK files for its implementation.
+#### This workshop is about the physical design flow right from the RTL netlist to the GDS II and this is done with the help of opensource software **openlane**. The tool uses the Google Skywater 130nm PDK files for its implementation.
 ---
 
 ##  **Day1**  -  *Foundation Of Opensource EDA,openLANE and sky130 PDK*
@@ -15,13 +14,54 @@
 ##  **Day5**  -  *Final steps for RTL2GDS using tritonRoute and openSTA*
 
 # **DAY 1**
-
 ## *Foundation Of Opensource EDA,openLANE and sky130 PDK*
-![image](https://user-images.githubusercontent.com/86550945/124321845-ff071480-db9b-11eb-991c-0a4d9d2d4c5b.png)
+
+### **HOW TO TALK TO COMPUTERS**
+
+ IC (Integrated Circuit) is a unit  where all the electronics components which are needed for a certain function is present. The electronic  components  including   resistors, transistors, capacitors, and diodes are interconnect to perform a given function.This single integrated circuit can have millions of such circuits inside    it depending upon the computational power.
+
+![image](https://user-images.githubusercontent.com/86550945/124346052-458b5c00-dbfa-11eb-9317-0e62b3744908.png)
+
+ For example, we take an `Arduino board `  which is a microcontroller based board which has in it power port, microcontroller, analog input pins,digital pins and IC and so on, So the important thing which we need to concentrate on is the IC which is present inside the board.It is this IC which can be  consisdered as the brain of the board,i.e,it is responsible for all the functions.
+
+And generally it somewhat looks like as shown in the below figure,wherein it consists of seversl foundry IP's ,macros etc.
+
+![image](https://user-images.githubusercontent.com/86550945/124346725-0828cd80-dbfe-11eb-8ea5-c248473f895b.png)
+
+
+### **INTERFACE OF THE SOFTWARE APPLICATIONS TO HARDWARE**
+
+Inorder to interface software and hardware i.e to run an application software on a hardware we have to tarnslate the highlevel language which is understandable by humans to a machine level code which machines can understand.This is done by system software which comprises of:
+```
+1.Operating System
+2.Compiler
+3.Assembler
+```
+![image](https://user-images.githubusercontent.com/86550945/124347216-0e6c7900-dc01-11eb-94c2-ac739f6309a8.png)
+
+The Operating System does the process of conversion of  high level applications  into assembly language program and also takes care of input, output functions.The compiler converts the codes written in  programming language such as(java ,R,etc.) to hardware instructions and saves them as an .exe file.Finally,the Assembler converts the compiler instructions to a machine language which the machine can understand.
+
+### **ASIC DESIGN FLOW**
+
+ASIC- Application Specific Integrated circuit is a IC where the chip is customised according to the application,it involves a design flow for attaining the final expected module.
+![image](https://user-images.githubusercontent.com/86550945/124347464-97d07b00-dc02-11eb-80e0-588e67e11800.png)
+
+**The steps of the ASIC Design flow are as follows:**
+
+```Step 1: Synthesis```: It is the  process where our RTL code is converted to netlist,where the desired circuit behaviour is turned into a design implementable form.
+
+```Step 2: Floor Planning and Power Planning``` : In this step the area,i.e the silicon area which is ocuupied by the chip is planned ,it involves preplacing of cells,it also decides the location of IO pads.Power planning is basically how much power to provide for every macros, standard cells, and all other cells that are present in the design.
+
+```Step 3: Placement``` : Placement is  process of defining correct positions to predesigned cells on the chip .It involves placing the gate level netlist cells on the virtual rows,the cells are placed closely inorder to avoid delay and to acheive optimization.
+
+```Step 4: Clock Tree Synthesis```: The clock is distributed allover the module, the CTS involves routing of the clock to all the sequential elements properly such that it avoids clock skew.
+
+```Step 5: Routing```: Routing is distributing of  wires in the routing space that connects the nets in the netlist by following the design rules for the metals and vias.
 
 
 
-### 
+
+
 
 ## config.tcl file
 ![image](https://user-images.githubusercontent.com/86550945/124233183-36d87280-db30-11eb-9889-17dfaff181a8.png)
