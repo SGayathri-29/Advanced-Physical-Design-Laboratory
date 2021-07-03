@@ -129,34 +129,54 @@ Every design folder contains a src folder , library files and config files in it
 
 ![image](https://user-images.githubusercontent.com/86550945/124230974-55893a00-db2d-11eb-8502-7620b848353d.png)
 
-![image](https://user-images.githubusercontent.com/86550945/124231099-79e51680-db2d-11eb-8e95-575ab573a9ac.png)
+![image](https://user-images.githubusercontent.com/86550945/124352349-631ded00-dc1d-11eb-9fc1-404b566c4357.png)
 
+**configuration file** :
 
-## config.tcl file
+This file bypasses any configuration that has been already done into the plane.The below image is how a config file looks like,
+
 ![image](https://user-images.githubusercontent.com/86550945/124233183-36d87280-db30-11eb-9889-17dfaff181a8.png)
 
+```package require openlane```
 
+This command inputs the packages that are required to run the flow.
 
-
-
-##package require openlane
 ![image](https://user-images.githubusercontent.com/86550945/124229597-794b8080-db2b-11eb-9ffe-6e8aea438a93.png)
-##prep -design
+
+```prep -design design name```
+
+   eg: for our design it is ```prep  -design picorv32a```
+  
+  This command is given for merging cell level LEF files and Tech level LEF files
+  
 ![image](https://user-images.githubusercontent.com/86550945/124229736-b283f080-db2b-11eb-9d73-a19d896c89fc.png)
 
+We can see that our design is mapped with the techfiles i.e abc libmapping is done over here.
 
-
-##abc libmap
 ![image](https://user-images.githubusercontent.com/86550945/124230484-b06e6180-db2c-11eb-8fca-17fee5047f75.png)
 
+```run_synthesis```
+ 
+ This command runs the synthesis of our design and this done with the help of yosys
+ 
+The Synthesis has been completed successfully
 
-##Synthesis is complete...![image](https://user-images.githubusercontent.com/86550945/124227549-7dc26a00-db28-11eb-8769-85caa3b94f13.png)
+[image](https://user-images.githubusercontent.com/86550945/124227549-7dc26a00-db28-11eb-8769-85caa3b94f13.png)
 
-## dff stats
+After the entire synthesis is complete we can check our timing ,dff and slew and many reports in runs folder which is present in our design folder
+
+*dff stats*                                                                                            
+
 ![image](https://user-images.githubusercontent.com/86550945/124233688-b8300500-db30-11eb-83df-340ec6c8ed25.png)
-## timing report
+
+ *timing report*
+                                         
+
 ![image](https://user-images.githubusercontent.com/86550945/124233815-de55a500-db30-11eb-99a6-585f96ce5401.png)
-## slew report
+
+ *slew report*
+
+
 ![image](https://user-images.githubusercontent.com/86550945/124233893-fa594680-db30-11eb-917e-548e6c8b5594.png)
 
 
