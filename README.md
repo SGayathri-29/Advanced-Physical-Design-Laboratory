@@ -70,56 +70,74 @@ The complete flow of the openLANE tool is as follows:
 
 Opensource tools that are used in our flow and its definitions:
 
-***For Synthesis:***
+***FOR SYNTHESIS***
 
-```Yosys```      - Performs synthesis of our RTL design.
+**Yosys**     - Performs synthesis of our RTL design.
 
-```abc```        - Performs abc mapping  to map the  technology files  to the standard cells following the description in PDK.dff mapping also does the  same function.
+**abc**        - Performs abc mapping  to map the  technology files  to the standard cells following the description in PDK.dff mapping also does the  same function.
 
-``` OpenSTA ``` -  Performs the static timing analysis of our obtained netlist.
+**OpenSTA** -  Performs the static timing analysis of our obtained netlist.
 
-``` Fault ```   –  Performs testing of the faults, insertion of scanchains and fault modelling can be performed here.
+**Fault**   –  Performs testing of the faults, insertion of scanchains and fault modelling can be performed here.
 
-***For Floorplanning:***
+***FOR FLOORPLANNING:***
 
-```Ioplacer ```- Performs the Placing of the input and output ports
+**Ioplacer**- Performs the Placing of the input and output ports
 
-``` Init_fp ``` - Performs the definition of the core area in our chip.
+ **Init_fp** - Performs the definition of the core area in our chip.
 
-  ```RePLace``` - Performs global placement
+  **RePLace** - Performs global placement
   
-  ```OpenDP```  - Performs Detailed Placement
+  **OpenDP**  - Performs Detailed Placement
   
- ``` Resizer``` - Performs Optimisation of the design which can be optional.
+ **Resizer** - Performs Optimisation of the design which can be optional.
  
- ***For CTS***
+ ***FOR CTS***
  
- ```TritonCTS``` -  Performs Synthesis of the Clock tree that is present all over the design.
+ **TritonCTS** -  Performs Synthesis of the Clock tree that is present all over the design.
  
  ***Routing***
  
- ```SPEF-Extractor``` - Performs extraction SPEF . 
+ **SPEF-Extractor** - Performs extraction SPEF . 
  
- ```FastRoute```      - Performs Global routing.
+ **FastRoute**      - Performs Global routing.
  
  
+***GDSII FILE GENARATION***
+
+**Magic**         -   It provides us the final GDSII layout file 
+
+
+
+## **STARTING WITH OPENLANE**(invoking openlane)
+
+The following steps are performed for the invoking of openlane,every time we perform our physical design we are supposed to invoke openlane by performing the following steps
+
+```cd openLANE```
+
+ This command is used in calling our required directory,in this case it is openlane directory 
+ 
+![image](https://user-images.githubusercontent.com/86550945/124228983-929ffd00-db2a-11eb-8d6a-a99e9bae1e3c.png)
+
+```./flow.tcl -interactive ```
+
+We basically have two modes for running our openlane flow ,they are interactive and automated,we are using interactive flow ,we give the above mentioned keyword for running in interactive mode.
+
+![image](https://user-images.githubusercontent.com/86550945/124228779-5076bb80-db2a-11eb-9b43-cea0de4599e6.png)
+
+Every design folder contains a src folder , library files and config files in it,we have considered picorv32a for our synthesis ,so the following are the files present in the picorv32a design folder.
+
+![image](https://user-images.githubusercontent.com/86550945/124230974-55893a00-db2d-11eb-8502-7620b848353d.png)
+
+![image](https://user-images.githubusercontent.com/86550945/124231099-79e51680-db2d-11eb-8e95-575ab573a9ac.png)
 
 
 ## config.tcl file
 ![image](https://user-images.githubusercontent.com/86550945/124233183-36d87280-db30-11eb-9889-17dfaff181a8.png)
 
 
-##every design contains...
-![image](https://user-images.githubusercontent.com/86550945/124230974-55893a00-db2d-11eb-8502-7620b848353d.png)
-![image](https://user-images.githubusercontent.com/86550945/124231099-79e51680-db2d-11eb-8e95-575ab573a9ac.png)
 
 
-##cd ing openlane
-![image](https://user-images.githubusercontent.com/86550945/124228983-929ffd00-db2a-11eb-8d6a-a99e9bae1e3c.png)
-
-
-##.flow.tcl
-![image](https://user-images.githubusercontent.com/86550945/124228779-5076bb80-db2a-11eb-9b43-cea0de4599e6.png)
 
 ##package require openlane
 ![image](https://user-images.githubusercontent.com/86550945/124229597-794b8080-db2b-11eb-9ffe-6e8aea438a93.png)
