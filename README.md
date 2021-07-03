@@ -43,7 +43,8 @@ The Operating System does the process of conversion of  high level applications 
 
 ### **ASIC DESIGN FLOW**
 
-ASIC- Application Specific Integrated circuit is a IC where the chip is customised according to the application,it involves a design flow for attaining the final expected module.
+ASIC- Application Specific Integrated circuit is a IC where the chip is customised according to the application,it involves a design flow for attaining the final expected module.For this flow three components are very important which are EDA tool,RTL design and PDK information.
+
 ![image](https://user-images.githubusercontent.com/86550945/124347464-97d07b00-dc02-11eb-80e0-588e67e11800.png)
 
 **The steps of the ASIC Design flow are as follows:**
@@ -57,10 +58,51 @@ ASIC- Application Specific Integrated circuit is a IC where the chip is customis
 ```Step 4: Clock Tree Synthesis```: The clock is distributed allover the module, the CTS involves routing of the clock to all the sequential elements properly such that it avoids clock skew.
 
 ```Step 5: Routing```: Routing is distributing of  wires in the routing space that connects the nets in the netlist by following the design rules for the metals and vias.
+which are specified in the respective PDKS.
 
+### OpenLANE FLOW - ASIC 
 
+Openlane is an opensource tool which is developed for the Physical design flow.Openlane is dependent on various tools such as  GTK wave,Yosys,abc,Klayout,magic etc,. Here the entire flow from RTL Design synthesis and  to the final GDSII is performed . The PDKs are being introduced to support the flow of the total design . 
 
+The complete flow of the openLANE tool is as follows:
 
+![image](https://user-images.githubusercontent.com/86550945/124348595-6490ea80-dc08-11eb-8b07-c0cde954cfc3.png)
+
+Opensource tools that are used in our flow and its definitions:
+
+***For Synthesis:***
+
+```Yosys```      - Performs synthesis of our RTL design.
+
+```abc```        - Performs abc mapping  to map the  technology files  to the standard cells following the description in PDK.dff mapping also does the  same function.
+
+``` OpenSTA ``` -  Performs the static timing analysis of our obtained netlist.
+
+``` Fault ```   –  Performs testing of the faults, insertion of scanchains and fault modelling can be performed here.
+
+***For Floorplanning:***
+
+```Ioplacer ```- Performs the Placing of the input and output ports
+
+``` Init_fp ``` - Performs the definition of the core area in our chip.
+
+  ```RePLace``` - Performs global placement
+  
+  ```OpenDP```  - Performs Detailed Placement
+  
+ ``` Resizer``` - Performs Optimisation of the design which can be optional.
+ 
+ ***For CTS***
+ 
+ ```TritonCTS``` -  Performs Synthesis of the Clock tree that is present all over the design.
+ 
+ ***Routing***
+ 
+ ```SPEF-Extractor``` - Performs extraction SPEF . 
+ 
+ ```FastRoute```      - Performs Global routing.
+ 
+ 
 
 
 ## config.tcl file
