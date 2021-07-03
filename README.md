@@ -181,7 +181,7 @@ We can find our reports in the reports folder which is shown below
 
 ## *dff stats*                                                                                            
 
-![image](https://user-images.githubusercontent.com/86550945/124233688-b8300500-db30-11eb-83df-340ec6c8ed25.png)
+![image](https://user-images.githubusercontent.com/86550945/124354024-851c6d00-dc27-11eb-969b-a95e56dfb222.png)
 
 ## *timing report*
                                          
@@ -192,6 +192,61 @@ We can find our reports in the reports folder which is shown below
 
 
 ![image](https://user-images.githubusercontent.com/86550945/124233893-fa594680-db30-11eb-917e-548e6c8b5594.png)
+
+
+# **DAY 2**
+
+## *Floor Planning and Library Cells*
+
+CHIP FLOOR PLANNING CONSIDERATIONS
+
+1.Definition of core and die width and height
+
+2.Locations of preplaced cells
+
+3.Placement of decoupled capacitors
+
+4.Pin placement
+
+5.Logical cell placement blockage
+
+Definition of core and die width and height: The core and die area depends on the dimensions of logic gates,hence the dimensions of the chip.The dimensions of the core and die is also dependent on the standard cell dimensions.The wires doesn't contribute to these dimensions.
+
+Utilization factor :Utilization factor is defined as the area occupied by the netlist defined circuit in the core.Itt can be calculated as
+
+ Utilizaion factor = Area occupied by the netlist
+                    --------------------------------
+                     Total area of the core
+                     
+
+
+Aspect ratio : Aspect ratio can specify the shape of the chip. An aspect ratio of 1 discribes the chip as a square else it is a rectagle.Aspect ratio can be calcuated by
+
+ ![image](https://user-images.githubusercontent.com/86550945/124356204-68396700-dc32-11eb-8b9a-55bb78619f93.png)
+ 
+ ![image](https://user-images.githubusercontent.com/86550945/124356259-adf62f80-dc32-11eb-92d1-fbb8e0f91971.png)
+
+
+
+```run_floorplan```
+
+This command is used for running the floorplan
+
+![image](https://user-images.githubusercontent.com/86550945/124354710-ef82dc80-dc2a-11eb-8594-69df02098faa.png)
+
+Our final floorplan looks like this:
+
+![image](https://user-images.githubusercontent.com/86550945/124355185-8bade300-dc2d-11eb-8ba7-4b134396d8b1.png)
+
+We have to click on the floorplan -> press 'S' 2 times -> right and left click on the mouse ->Press 'Z',then we can zoom our floorplan
+
+![image](https://user-images.githubusercontent.com/86550945/124355356-4d64f380-dc2e-11eb-80fa-06a706cfdd02.png)
+
+Tckn console that appears when we open our floorplan ,we can view the parameters we desire by giving some keywords in this console,
+
+![image](https://user-images.githubusercontent.com/86550945/124355413-974dd980-dc2e-11eb-8de8-af94bed86b04.png)
+
+
 
 
 
