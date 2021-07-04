@@ -70,7 +70,7 @@ The complete flow of the openLANE tool is as follows:
 
 Opensource tools that are used in our flow and its definitions:
 
-***FOR SYNTHESIS***
+```FOR SYNTHESIS```
 
 **Yosys**     - Performs synthesis of our RTL design.
 
@@ -80,7 +80,7 @@ Opensource tools that are used in our flow and its definitions:
 
 **Fault**   –  Performs testing of the faults, insertion of scanchains and fault modelling can be performed here.
 
-***FOR FLOORPLANNING:***
+``` FOR FLOORPLANNING ```
 
 **Ioplacer**- Performs the Placing of the input and output ports
 
@@ -92,18 +92,18 @@ Opensource tools that are used in our flow and its definitions:
   
  **Resizer** - Performs Optimisation of the design which can be optional.
  
- ***FOR CTS***
+ ``` FOR CTS ```
  
  **TritonCTS** -  Performs Synthesis of the Clock tree that is present all over the design.
  
- ***Routing***
+ ``` ROUTING ```
  
  **SPEF-Extractor** - Performs extraction SPEF . 
  
  **FastRoute**      - Performs Global routing.
  
  
-***GDSII FILE GENARATION***
+``` GDSII FILE GENARATION ```
 
 **Magic**         -   It provides us the final GDSII layout file 
 
@@ -125,11 +125,10 @@ We basically have two modes for running our openlane flow ,they are interactive 
 
 ![image](https://user-images.githubusercontent.com/86550945/124228779-5076bb80-db2a-11eb-9b43-cea0de4599e6.png)
 
-Every design folder contains a src folder , library files and config files in it,we have considered picorv32a for our synthesis ,so the following are the files present in the picorv32a design folder.
+Every design folder contains a src folder , library files and config files in it,we have considered picorv32a for our synthesis.
 
-![image](https://user-images.githubusercontent.com/86550945/124230974-55893a00-db2d-11eb-8502-7620b848353d.png)
+![image](https://user-images.githubusercontent.com/86550945/124396016-de1dfb00-dd24-11eb-9f45-eba46156e9bd.png)
 
-![image](https://user-images.githubusercontent.com/86550945/124352349-631ded00-dc1d-11eb-9fc1-404b566c4357.png)
 
 **configuration file** :
 
@@ -218,6 +217,8 @@ We can find our reports in the reports folder which is shown below
 
 CHIP FLOOR PLANNING CONSIDERATION:
 
+Floorplan in simple terms is basically transforming our design netlist into a layout.There are somefactors that we need to consider before we do floorplanning
+
 ```1.Definition of core and die width and height```: The dimensions of the chip The core and die area depends on the dimensions of the basic logic gates present in the design.
 
 
@@ -238,15 +239,45 @@ CHIP FLOOR PLANNING CONSIDERATION:
                  
                      Width
 
+```2.Defining location of the preplaced cells:```
 
+In Electronic circuits, some part of the circuit,a smaller module can be implemented once and instantiated many times,so basically the logic of that smaller module is functionally implemented only once. These logic has its corresponding input and output and they are blackboxed and a part of the toplevel netlist.Since the logic of these cells are implemented only and done before placement and routing it is called as **preplaced cells**
 
+```3.Using Decoupling capacitors```
 
+In our design some cells may be physically faraway from the supplyvoltage,so we may not get the expected ouput and also we can get a problem of crosstalk. This happens becuase it does not receive the entire voltage as it travels along a long path which contains an inbuilt resistance .To avoid this, we  use a decoupling capacitor.
+The decoupling capacitors are fully charged capacitors and that are almost equal to that of the supply voltage.These decaps are placed closed to the circuit .These decaps prevents the circuit from entering into the grey area.
+
+```4.Powerplanning```
+
+We have to make sure that the power is being transmitted properly to the blocks without any delay or disruption. During power planning, power lines and ground straps are laid in  a way that they form a mesh structure and each cell can tap power to respective rails.
+
+```5.Pin Placement```
+
+The connectivity information is given in the form of netlist,which specifies the RTL connectivity ,and the pins are placed accordingly.Here the clock ports are larger than others as they drive the entire circuit in the chip and also they need the least resistance path.
+
+```6.Logical cell placement blockage```
+
+In the outerarea of the logic cells are blocked since it is reserved only for the input ,output pins .This blockage ensures that no other elements other than input,output and clockports are present there.
+
+ The next step after synthesis  is the floorplan. For that the below command is used
 
 ```run_floorplan```
 
 This command is used for running the floorplan
 
 ![image](https://user-images.githubusercontent.com/86550945/124354710-ef82dc80-dc2a-11eb-8594-69df02098faa.png)
+
+We use magic for viewing the floorplan,
+
+To view the floorplan on Magic,the following inputs are needed:
+
+1.Magic technology file
+2.def file of floorplan 
+3.Merged LEF file
+```
+magic -T /home/Desktop/username/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef/ def read picorv32a.floorplan.def &
+```
 
 Our final floorplan looks like this:
 
@@ -256,11 +287,19 @@ We have to click on the floorplan -> press 'S' 2 times -> right and left click o
 
 ![image](https://user-images.githubusercontent.com/86550945/124355356-4d64f380-dc2e-11eb-80fa-06a706cfdd02.png)
 
-Tckn console that appears when we open our floorplan ,we can view the parameters we desire by giving some keywords in this console,
+Tkcon console that appears when we open our floorplan ,we can view the parameters we desire by giving some keywords in this console,
 
-![image](https://user-images.githubusercontent.com/86550945/124355413-974dd980-dc2e-11eb-8de8-af94bed86b04.png)
+![image](https://user-images.githubusercontent.com/86550945/124396753-1fb0a500-dd29-11eb-8209-b4efaf6941e2.png)
+
+
 
 ## **PLACEMENT**
+
+After floorplanning, the placement of standard cells is done. The synthesized netlist OpenLANE does placement in two stages:
+
+Global Placement - This is for generating  a rough placement that may violate some placement constraints.and is it not legal.It determines the routing resgion for each net.It minimizes the area and timing.
+
+Detailed Placement - Determines exact route and layers of each net,it validates routing ,timing and area .The input for this is given by the global placement.
 
 ```run_placement```
 
@@ -273,13 +312,64 @@ This command performs placement.
  
 ![image](https://user-images.githubusercontent.com/86550945/124356403-7b006b80-dc33-11eb-8750-2dc75def7c1a.png)
 
-After placement we can check the placement.def file and it looks like this:
+After placement we can check the placement.def file using magic as we did for the floorplan and it looks like this:
 
 ![image](https://user-images.githubusercontent.com/86550945/124356655-b8192d80-dc34-11eb-820a-717a03182820.png)
 
 
 # **DAY 3**
+
 ## *Design Layout cell using Magic and ngspice characterisationK*
+
+CELL DESIGN FLOW:
+
+A cell as small as an inverter has to undergo many steps in the cell design flow.The important steps are as follows;
+
+```
+1.Read in the model files and tech files
+2.Read extracted spice netlist.
+3.Recognise the behaviour of the buffer.
+4.Read the subscircuit.
+5.Attach necessary power sources .
+6.Stimulus application.
+7.Give the necessary output capacitors.
+
+```
+
+SPICE DECK
+
+For simulation of the  standard cells, **Deck wrappers** are required to be generated with respect to the model files.Output waveform of the spice deck is plotted using ngspice . The steps followed to run the spice deck is as follows ,Source the .cir spice deck file using the  ```source spicedeck.cir```command .To run the spice file ```run``` command is used.  ```setplot``` allows to view plots .By entering the name of the simulation in the terminal display we do our desired simulation.The typical ngspice terminal looks like this where we have to enter our commands..
+
+![image](https://user-images.githubusercontent.com/86550945/124397092-6e5f3e80-dd2b-11eb-8d6f-883e5dab453f.png)
+
+## 16-mask CMOS process
+
+_**Select a substrate**_ - Selection of a substrate  for our base .The whole chip is fabricated on this.This can be either p or n substrate.
+
+_**Create active region**_ -Creation of  an insulating  layer by depositing SiO2 and Si3N2.Pockets are created using photoresist and lithography process.This photolithography process takes place from this.
+
+_**Formation of N-well and P-well formation**_ - Both of n-well and p-well has to been grown simultaneously. Ion Implantation is used for this purpose,so ion implantation is basically forcing of the desired particles with  energy as high as 200 keV over that area creating an active layer .
+
+_**Creating Gate terminal**_ - Gate terminal is an important terminal responsible for controlling our transistor and for turning it on .For the attaining  Desired threshold,doping Concentration and oxide thickness needs to be set which is taken care in this step.
+
+_**Lightly Doped Drain  formation**_- A thin layer of n -implant or p -implant are deposited usch that they donot penetrate into the substrate.It is done to avoid short channel effect and hot electron effect.
+
+_**Source and Drain formation**_- Drain and source are formed in this stage.
+
+_**Contacts and local interconnect creation**_- Contacts and interconnects are important since only throught this the entire build can be controlled .In this we remove the thin screen oxide SiO2 layer which we used to avoid channeling is removed  using HF etching. Titanium is deposited using sputtering.
+
+_**Higher Level metal layer formation**_- Upper metal layers are formed.Depositon of SiO2 in the first layer and in the second layer Aluminium is used and the contact holes are drilled.
+
+After the entire 16 MASK CMOS fabrication process it looks like as follows:
+
+![image](https://user-images.githubusercontent.com/86550945/124398081-686c5c00-dd31-11eb-9575-7460efe501c4.png)
+
+
+## **SIMULATION OF A CMOS INVERTER USING ngspice** 
+
+
+
+
 
 
 
