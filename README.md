@@ -314,7 +314,7 @@ This command performs placement.
 
 After placement we can check the placement.def file using magic as we did for the floorplan and it looks like this:
 
-![image](https://user-images.githubusercontent.com/86550945/124356655-b8192d80-dc34-11eb-820a-717a03182820.png)
+![image](https://user-images.githubusercontent.com/86550945/124431450-fd9d3e00-dd8d-11eb-9aca-eaa8ffbf033f.png)
 
 
 # **DAY 3**
@@ -366,6 +366,82 @@ After the entire 16 MASK CMOS fabrication process it looks like as follows:
 
 
 ## **SIMULATION OF A CMOS INVERTER USING ngspice** 
+
+The inverter cell what we are trying to simulate a lot of time to build from scratch so we are downloading it from github and after layout simulation and characterizing this design is plugged into our main design that is ```picorv32a```
+
+the file it gitcloned from:
+```git clone https://github.com/nickson-jose/vsdstdcelldesign.git```
+
+The tech file for the magic that is inside  the pdk directory is copied to the vsdstdcelldesign directory.
+
+![image](https://user-images.githubusercontent.com/86550945/124429602-b746df80-dd8b-11eb-8786-c5ff831947d7.png)
+
+After copying we can we that file in the vsdstdcelldesign directory:
+
+vsdstdcelldesign directory
+
+To view the layout using the opensource tool the following command is used:
+
+![image](https://user-images.githubusercontent.com/86550945/124429748-e3626080-dd8b-11eb-9215-4a0e4de13f6b.png)
+
+```magic -T sky130A.tech sky130_inv.mag &```
+
+The layout looks like this:
+
+![image](https://user-images.githubusercontent.com/86550945/124429846-042ab600-dd8c-11eb-8826-416281d9af39.png)
+
+We can click on the layout at any point we want and if we press S the region gets selected ,if we press S for three times the entire port is selected as shown below
+
+![image](https://user-images.githubusercontent.com/86550945/124430346-af3b6f80-dd8c-11eb-9f85-94478dc1bf7b.png)
+
+If we select a certain block and type ```property``` in tkcon console which rightly appears when the magic is invoked ,it gives us the property of that particular cell we have selected
+
+![image](https://user-images.githubusercontent.com/86550945/124430811-4274a500-dd8d-11eb-87a9-3003d079e610.png)
+
+Similarly we can use a command ```box``` for viewing the cell's coordinates.
+
+![image](https://user-images.githubusercontent.com/86550945/124431843-8ddb8300-dd8e-11eb-968e-e41329c40b19.png)
+
+## CHECKING OF DRC ERRORS
+
+DRC is basically Design Rule Check , and we can have drc errors if we donot follow the design rules, and the following picture shows us that we have not follwed the DRC rules,we can check that errors by clicking on DRC.
+
+![image](https://user-images.githubusercontent.com/86550945/124431985-b5325000-dd8e-11eb-8e53-bc0ecd314782.png)
+
+## PEX Extraction using Magic
+
+For extract our inverter layout in spice ,use the command ```extract all ``` in the tkcon window
+
+![image](https://user-images.githubusercontent.com/86550945/124433009-de9fab80-dd8f-11eb-8abf-1ff564279376.png)
+
+
+Now  we can see that the files are extracted to our vsdstdcelldesign directory
+
+![image](https://user-images.githubusercontent.com/86550945/124432658-7f419b80-dd8f-11eb-9941-4adb5a2952a2.png)
+
+After this we use the following commands in the tkcon console :
+
+```
+ext2spice cthresh 0 rthresh 0
+ext2spice
+```
+
+![image](https://user-images.githubusercontent.com/86550945/124433611-90d77300-dd90-11eb-855e-6f11a91de6c6.png)
+
+Now we can see that the spice file has also been added
+
+![image](https://user-images.githubusercontent.com/86550945/124433755-bbc1c700-dd90-11eb-9e6b-9f9ad093dc6e.png)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
