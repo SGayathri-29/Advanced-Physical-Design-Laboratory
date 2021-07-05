@@ -629,7 +629,69 @@ Power Distribution network is basically a network for distributing the power acr
 
 ![image](https://user-images.githubusercontent.com/86550945/124482733-3ad1f200-ddc7-11eb-8705-3b532f899bfa.png)
 
+After completion:
 
+![image](https://user-images.githubusercontent.com/86550945/124482853-5806c080-ddc7-11eb-8d93-b9c5002775be.png)
+
+In the below image we see that the power and ground rails are built which is denoted by the blue lines,
+
+![image](https://user-images.githubusercontent.com/86550945/124482988-7f5d8d80-ddc7-11eb-975f-c7a5751852af.png)
+
+##  ROUTING
+
+In this stage the interconnections  are made by determing the specific path for connecting the nets.We have many routing algorithms for determing the path for connecting the nets such as maze routing and steiner tree routing algorithms.As the routing process is very complex, routing is divided into two stages which are global routing and detailed routing
+
+![image](https://user-images.githubusercontent.com/86550945/124483442-fa26a880-ddc7-11eb-8db0-56537a80e4df.png)
+
+1.Global routing:
+Here the routing region is divided into rectangular gridcells,It forms routing guides for the further routing .It basically forms a rough path of connection.
+
+2.Detailed routing:
+The detailed route determines the vias and segments accordingly with the global route solution.This ensures that routing happens within the routing guides.
+
+In the below image we can see that there many routing guides which are used in the flow.
+
+![image](https://user-images.githubusercontent.com/86550945/124484873-9604e400-ddc9-11eb-8536-2fc2eb75fe45.png)
+
+So if we look into one of the routing guide it contains the following information.We can see that routing guides are basically rectangles and for one net there can be many routing guides.So the below file contains the four coordinates of the routing guides.
+
+![image](https://user-images.githubusercontent.com/86550945/124485032-c77daf80-ddc9-11eb-8594-69b662638c8e.png)
+
+To run routing in OpenLANE execute the command``run routing``
+
+Now we can invoke magic and see our result
+
+```
+magic -T /home/Desktop/username/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef/ def read picorv32a.def &
+```
+
+![image](https://user-images.githubusercontent.com/86550945/124485892-a79abb80-ddca-11eb-9158-2c84f1bfff30.png)
+
+if we select and expand we get the following image,which shows us that all the cells are connected and fillers are added
+
+![image](https://user-images.githubusercontent.com/86550945/124485699-77ebb380-ddca-11eb-905d-894b583fee6f.png)
+
+Now we can see that our final design contains sky130_vsdinv
+
+![image](https://user-images.githubusercontent.com/86550945/124486279-0b24e900-ddcb-11eb-951b-4899a92a02ee.png)
+
+## SPEF EXTRACTION
+
+
+SPEF is Standard Parasitic Exchange Format.So once the routing is completed the interconnect parasitics are extraced using an SPEF generator .It performs sign-off post-route STA analysis. It consists of R,L,C in the ASCII format which can be seen in the below file.It is done after placement and routing.
+
+![image](https://user-images.githubusercontent.com/86550945/124487252-1c222a00-ddcc-11eb-84c2-a30d11257d15.png)
+
+## GDSII
+
+GDSII is abbreviated as  "Geometrical data base standard for information interchange". Its the final  output file of the layout which will be sent to the fabs.
+
+
+## Acknowledgements:
+
+Kunal Ghosh, Co-founder (VSD Corp. Pvt. Ltd)
+
+Nickson P Jose, Teaching Assistant (VSD Corp. Pvt. Ltd)
 
 
 
