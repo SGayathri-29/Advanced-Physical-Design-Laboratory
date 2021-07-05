@@ -425,12 +425,40 @@ After this we use the following commands in the tkcon console :
 ext2spice cthresh 0 rthresh 0
 ext2spice
 ```
+This ext file is for creating the spice file that is compatible with the ngspice tool.The parasitic capacitances have been removed and the file is extraced to spice.
+
 
 ![image](https://user-images.githubusercontent.com/86550945/124433611-90d77300-dd90-11eb-855e-6f11a91de6c6.png)
 
 Now we can see that the spice file has also been added
 
 ![image](https://user-images.githubusercontent.com/86550945/124433755-bbc1c700-dd90-11eb-9e6b-9f9ad093dc6e.png)
+
+Now we obtain the SPICE deck and it  is editted accordingly ,Since we are running transient analysis we edit the netlist obtained accordingly
+
+![image](https://user-images.githubusercontent.com/86550945/124434379-6fc35200-dd91-11eb-8ce8-1ee90bec5c1e.png)
+
+We use the following command for invoking ngspice 
+
+``` ngspice sky130Ainv.spice```
+
+![image](https://user-images.githubusercontent.com/86550945/124434580-a9945880-dd91-11eb-950b-afe12ca18460.png)
+
+After this command is given we can view our output i.e the output we have obtained is the output of the inverter.
+
+![image](https://user-images.githubusercontent.com/86550945/124435233-671f4b80-dd92-11eb-9e40-8452c49a34dd.png)
+
+The following timing parameters are calculated.They are;
+
+1.```Rise transition delay``` - It is the  time taken for the output signal to reach from 20% to 80% of maximum value.
+
+2. ```Fall transition delay``` = It is the  Time taken for the output signal to reach from 80% to 20% of maximum value.
+
+3. ```Cell rise delay```   = It is the time difference between 50% of rising output and 50% of falling output
+
+4.```Cell fall delay``` = It is the time difference between 50% of falling output and 50% of rising output
+
+
 
 
 
