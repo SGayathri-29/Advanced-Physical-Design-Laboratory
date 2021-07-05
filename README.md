@@ -444,19 +444,97 @@ We use the following command for invoking ngspice
 
 ![image](https://user-images.githubusercontent.com/86550945/124434580-a9945880-dd91-11eb-950b-afe12ca18460.png)
 
-After this command is given we can view our output i.e the output we have obtained is the output of the inverter.
+After this command is given we can view our output i.e the output we have obtained is the output of the inverter,and for plotting the transient analysis, we use the following command
 
-![image](https://user-images.githubusercontent.com/86550945/124435233-671f4b80-dd92-11eb-9e40-8452c49a34dd.png)
+```    plot y vs time a  ```
+
+![image](https://user-images.githubusercontent.com/86550945/124461336-1fa6b880-ddae-11eb-994f-82a00afc89c5.png)
 
 The following timing parameters are calculated.They are;
 
-1.```Rise transition delay``` - It is the  time taken for the output signal to reach from 20% to 80% of maximum value.
+1.```Rise transition delay``` = It is the  time taken for the output signal to reach from 20% to 80% of maximum value.
 
-2. ```Fall transition delay``` = It is the  Time taken for the output signal to reach from 80% to 20% of maximum value.
+2.```Fall transition delay``` = It is the  Time taken for the output signal to reach from 80% to 20% of maximum value.
 
-3. ```Cell rise delay```   = It is the time difference between 50% of rising output and 50% of falling output
+3.```Cell rise delay```   = It is the time difference between 50% of rising output and 50% of falling output
 
 4.```Cell fall delay``` = It is the time difference between 50% of falling output and 50% of rising output
+
+We can calculate the rise transition delay for this circuit,for which we have to calculate 20% and 80% of the maximum value.
+
+by zooming it in we can calculate  80%  of the maximum value.
+
+![image](https://user-images.githubusercontent.com/86550945/124460278-cdb16300-ddac-11eb-8ae8-e2b64089eb21.png)
+
+ and thereby 20% of the maximum value also,
+  
+![image](https://user-images.githubusercontent.com/86550945/124460090-8a56f480-ddac-11eb-8a5d-4232eb8680f3.png)
+
+If we just click on that particular point we can view the coordinates;
+
+![image](https://user-images.githubusercontent.com/86550945/124461230-fe45cc80-ddad-11eb-80ea-1ac979820c29.png)
+
+# **DAY 4**
+
+## *Prelayout Timing Analysis and importance of good clock tree*
+
+Extracting LEF file and plugging it into
+
+The LEF contains basically the information of the input ,output ports,power line and grid lines.Extract LEF file out of .mag file. The extracted LEF file will be plugged into picorv32a flow.
+
+Guidelines need to be followed while making standard cell set,such as ;
+
+```1.The io ports must lie on the intersection of horizontal and vertical tracks.
+   2.Width of the standard cells is the odd multiple of horizontal tracks pitch. 
+   3.Height must be odd multiple of vertical tracks.
+```
+
+By its name Tracks are used during routing stage, Only over these routes the PNR tool can do routing.We can get the track information from the track.info file which is in the PDK files
+
+![image](https://user-images.githubusercontent.com/86550945/124463610-c12f0980-ddb0-11eb-9a95-37e75fe01356.png)
+ 
+For example,
+
+li1 layer (X) -> the horizontal track's  offset is  0.23 and  pitch is 0.46
+
+li1 layer (Y) -> the vertical track's  offset is 0.17 and  pitch is 0.34
+
+and for metal1 both pitch and offset are same.
+
+We have to converge the grid definiton according to the track definiton,for ensuring that we can reach the design from X and Y direction.The below tckcon console explains us how we can change the value of the grid .
+
+![image](https://user-images.githubusercontent.com/86550945/124464478-de180c80-ddb1-11eb-9a64-6f110fa37594.png)
+
+This is the layout of our inverter,we can see that it is surrounded with lots of boxes which are nothing but the grids.
+
+![image](https://user-images.githubusercontent.com/86550945/124465077-9a71d280-ddb2-11eb-9afa-675232a6b7e6.png)
+
+If we zoom it, we can see that, the input and output port A and Y are on the intersection of horizontal and vertical tracks as denoted by the arrow marks in the following figure.
+
+![image](https://user-images.githubusercontent.com/86550945/124465570-33a0e900-ddb3-11eb-894c-8eb3b7bee32c.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
 
 
 
