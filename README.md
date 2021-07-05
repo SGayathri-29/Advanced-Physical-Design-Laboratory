@@ -672,7 +672,7 @@ In the below image we see that the power and ground rails are built which is den
 
 ##  ROUTING
 
-In this stage the interconnections  are made by determing the specific path for connecting the nets.We have many routing algorithms for determing the path for connecting the nets such as maze routing and steiner tree routing algorithms.As the routing process is very complex, routing is divided into two stages which are global routing and detailed routing
+In this stage the interconnections  are made by determining the specific path for connecting the nets.We have many routing algorithms for determing the path for connecting the nets such as maze routing and steiner tree routing algorithms.As the routing process is very complex, routing is divided into two stages which are global routing and detailed routing
 
 ![image](https://user-images.githubusercontent.com/86550945/124483442-fa26a880-ddc7-11eb-8db0-56537a80e4df.png)
 
