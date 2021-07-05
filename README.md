@@ -6,12 +6,46 @@
 
 #### This workshop is about the physical design flow right from the RTL netlist to the GDS II and this is done with the help of opensource software **openlane**. The tool uses the Google Skywater 130nm PDK files for its implementation.
 ---
+##  TABLE OF CONTENTS 
 
 ##  **Day1**  -  *Foundation Of Opensource EDA,openLANE and sky130 PDK*
+```
+1.How to talk to computers
+2.Interface of the software applications to the hardware
+3.Asic Design Flow
+4.Openlane flow
+5.Starting with openlane.
+6.Synthesis
+```
 ##  **Day2**  -  *Floor plan and Library cells*
+```
+1.Chip Floorplanning consideration.
+2.Placement
+```
 ##  **Day3**  -  *Design Layout cell using Magic and ngspice characterisation*
+```
+1.Cell Design Flow
+2.Spice Deck
+3.16 MASK CMOS process
+4.Simulation of a CMOS inverter using ngspice
+5.Checking of DRC errors
+6.PEX Extraction
+```
 ##  **Day4**  -  *Prelayout Timing Analysis and importance of good clock tree*
+```
+1.Extraction of LEF files
+2.Fixing of slack violations
+3.Clock Tree Synthesis
+4.Timing Analysis using openSTA
+```
+
 ##  **Day5**  -  *Final steps for RTL2GDS using tritonRoute and openSTA*
+```
+1.Power Distribution Network
+2.Routing
+3.SPEF Extraction
+4.GDSII
+```
 
 # **DAY 1**
 ## *Foundation Of Opensource EDA,openLANE and sky130 PDK*
@@ -176,7 +210,6 @@ The synthesised netlist looks like this:
 We can find our reports in the reports folder which is shown below
 
 ![image](https://user-images.githubusercontent.com/86550945/124353747-eba08b80-dc25-11eb-9080-7e540833fc68.png)
-
 
 ## *dff stats*                                                                                            
 
