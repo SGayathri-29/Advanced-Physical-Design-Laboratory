@@ -215,7 +215,7 @@ We can find our reports in the reports folder which is shown below
 
 ## *Floor Planning and Library Cells*
 
-CHIP FLOOR PLANNING CONSIDERATION:
+## CHIP FLOOR PLANNING CONSIDERATION:
 
 Floorplan in simple terms is basically transforming our design netlist into a layout.There are somefactors that we need to consider before we do floorplanning
 
@@ -321,7 +321,7 @@ After placement we can check the placement.def file using magic as we did for th
 
 ## *Design Layout cell using Magic and ngspice characterisationK*
 
-CELL DESIGN FLOW:
+## CELL DESIGN FLOW:
 
 A cell as small as an inverter has to undergo many steps in the cell design flow.The important steps are as follows;
 
@@ -336,7 +336,7 @@ A cell as small as an inverter has to undergo many steps in the cell design flow
 
 ```
 
-SPICE DECK
+## SPICE DECK
 
 For simulation of the  standard cells, **Deck wrappers** are required to be generated with respect to the model files.Output waveform of the spice deck is plotted using ngspice . The steps followed to run the spice deck is as follows ,Source the .cir spice deck file using the  ```source spicedeck.cir```command .To run the spice file ```run``` command is used.  ```setplot``` allows to view plots .By entering the name of the simulation in the terminal display we do our desired simulation.The typical ngspice terminal looks like this where we have to enter our commands..
 
@@ -478,7 +478,7 @@ If we just click on that particular point we can view the coordinates;
 
 ## *Prelayout Timing Analysis and importance of good clock tree*
 
-Extracting LEF file and plugging it into
+## EXTRACTING  LEF FILES AND PLUGGING IT INTO OUR DESIGN.
 
 The LEF contains basically the information of the input ,output ports,power line and grid lines.Extract LEF file out of .mag file. The extracted LEF file will be plugged into picorv32a flow.
 
@@ -512,6 +512,44 @@ This is the layout of our inverter,we can see that it is surrounded with lots of
 If we zoom it, we can see that, the input and output port A and Y are on the intersection of horizontal and vertical tracks as denoted by the arrow marks in the following figure.
 
 ![image](https://user-images.githubusercontent.com/86550945/124465570-33a0e900-ddb3-11eb-894c-8eb3b7bee32c.png)
+
+Width of the standard cells is the odd multiple of horizontal tracks pitch , we can see that this rule is also satisfied as here it is calculated to be 3 which is an odd multiple.
+
+![image](https://user-images.githubusercontent.com/86550945/124467199-284ebd00-ddb5-11eb-9eb6-11f1880e4643.png)
+
+The ports will be considered as pins ,while extracting the LEF file 
+
+To extract the lef file, the command used is ``` lef write```
+
+![image](https://user-images.githubusercontent.com/86550945/124468002-36510d80-ddb6-11eb-9308-57e06c6db7d5.png)
+
+And we can see that a new lef file is created in the vsdstdcelldesign directory.
+
+![image](https://user-images.githubusercontent.com/86550945/124468447-bf684480-ddb6-11eb-9165-3f17550d94fb.png)
+
+The below image is the generated LEF file .In the lef file we can see   that the ports is assigned as pins and the changes that were made in magic is reflected here
+
+![image](https://user-images.githubusercontent.com/86550945/124468586-e888d500-ddb6-11eb-94e5-2966d93bc3c6.png)
+
+Inorder to plugin this LEF file into picorv32a flow,  lef file and the library files has to be copied into the source folder of our design.
+
+![image](https://user-images.githubusercontent.com/86550945/124469356-e410ec00-ddb7-11eb-952d-2051cb918c40.png)
+
+
+In the config.tcl file The config.tcl file some modifications are made ,location of the LEF file and other files is given, and it looks like this,
+
+![image](https://user-images.githubusercontent.com/86550945/124469608-33571c80-ddb8-11eb-9762-be40c2ae30bf.png)
+
+Now we run the entire flow and we can observe that sky130_vsdinv is added to our design.
+
+
+
+
+
+
+
+
+
 
 
 
