@@ -540,8 +540,101 @@ In the config.tcl file The config.tcl file some modifications are made ,location
 
 ![image](https://user-images.githubusercontent.com/86550945/124470226-fc353b00-ddb8-11eb-83a4-e180a89b31d3.png)
 
+Now we run the entire flow again,
 
-Now we run the entire flow and we can observe that sky130_vsdinv is added to our design.
+![image](https://user-images.githubusercontent.com/86550945/124475160-06f2ce80-ddbf-11eb-966c-e5e738f9161a.png)
+
+To include the lef cells make sure we add the follwing commands
+
+``` set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+    add_lefs -src $lefs 
+```
+
+ ##  FIXING OF SLACK VIOLATIONS
+ 
+ Inorder to avoid negative slack as it is not ideal to our design, we optimize the slack values and maintain a positive value.Inorder to do this we set various environmental variables and check if the slack is changing or not as given in the following image.We can do the modifications in the ```README.md``` file present in the configuration directory
+ 
+ These are the changes which has to been done to the environment variables and now the flow is run again
+ 
+ ![image](https://user-images.githubusercontent.com/86550945/124478252-a2397300-ddc2-11eb-983d-66e6eb28c5c2.png)
+ 
+ Now after doing this we can observe certain changes in the slack time.
+ 
+  After this the floor plan is run and this is the floorplan we can observe that sky130_vsdinv is added to our design.
+ 
+ ![image](https://user-images.githubusercontent.com/86550945/124475455-5cc77680-ddbf-11eb-8028-849abe03c510.png)
+
+Move the cursor to sky130_vsdinv,press 'S' and in the tkcon window enter ```what```,we can see that it displays sky130_vsdinv
+
+![image](https://user-images.githubusercontent.com/86550945/124475678-9bf5c780-ddbf-11eb-8d9a-10a5858a7731.png)
+
+ and in the tkcon window enter `expand`. We can see how that particular cell has established connection to its adjacent cells.
+ 
+ ![image](https://user-images.githubusercontent.com/86550945/124476066-0dce1100-ddc0-11eb-8f9f-2e8ace5771a5.png)
+ 
+
+## CLOCK TREE SYNTHESIS.
+
+Clock tree synthesis is a process which ensures that the clock signal gets distributed to all the sequential elements in the design to reduce the skew and latency.
+During CTS, clock buffers are added to the clock signal path which  are different from normal buffers since they  have equal rise and fall times.After CTS one can observe that the slack value is increased.The below method shows how the clock is distributed for a small design.
+
+![image](https://user-images.githubusercontent.com/86550945/124481400-dbbfad80-ddc5-11eb-81d9-a21a8360a561.png)
+
+
+we use ```run_cts``` command for the clock tree synthesis in openlane.
+
+![image](https://user-images.githubusercontent.com/86550945/124480008-74552e00-ddc4-11eb-949d-65efec1e92d9.png)
+
+## TIMING ANALYSIS USING OPENSTA
+
+The definition of our sta configuration file has to be done and run it for finding the timing parameters.
+
+Conifg file:
+
+![image](https://user-images.githubusercontent.com/86550945/124481563-07db2e80-ddc6-11eb-8ae1-27e603a21772.png)
+
+The openSTA configuration file is invoked as follows;
+
+![image](https://user-images.githubusercontent.com/86550945/124481850-5c7ea980-ddc6-11eb-8d07-0b47a47c4782.png)
+
+
+# **DAY 5**
+
+## *Final steps for RTL2GDS using tritonRoute and openSTA*
+
+Commands for the entire flow:
+```
+1.run_synthesis 
+
+2.init_floorplan 
+
+3.place_io
+
+4.global_placement_or
+
+5.detailed_placement 
+
+6.tap_decap_or detailed_placement
+
+7.gen_pdn
+
+8.run_routing
+```
+
+## POWER DISTRIBUTION NETWORK
+
+Power Distribution network is basically a network for distributing the power across the entire circuit.By this it ensures that it carry current from the pads to the internal circuitry ,provide current return path and to maintain stable voltage.
+
+``` % gen_pdn``` - command used for generating PDN.
+
+![image](https://user-images.githubusercontent.com/86550945/124482733-3ad1f200-ddc7-11eb-8705-3b532f899bfa.png)
+
+
+
+
+
+
+
 
 
 
