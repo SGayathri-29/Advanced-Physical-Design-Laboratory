@@ -293,7 +293,7 @@ The connectivity information is given in the form of netlist,which specifies the
 
 In the outerarea of the logic cells are blocked since it is reserved only for the input ,output pins .This blockage ensures that no other elements other than input,output and clockports are present there.
 
- The next step after synthesis  is the floorplan. For that the below command is used
+ The next step after synthesis  is the floorplan, and the command is;
 
 ```run_floorplan```
 
