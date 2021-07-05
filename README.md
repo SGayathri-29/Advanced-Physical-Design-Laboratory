@@ -538,7 +538,8 @@ Inorder to plugin this LEF file into picorv32a flow,  lef file and the library f
 
 In the config.tcl file The config.tcl file some modifications are made ,location of the LEF file and other files is given, and it looks like this,
 
-![image](https://user-images.githubusercontent.com/86550945/124469608-33571c80-ddb8-11eb-9762-be40c2ae30bf.png)
+![image](https://user-images.githubusercontent.com/86550945/124470226-fc353b00-ddb8-11eb-83a4-e180a89b31d3.png)
+
 
 Now we run the entire flow and we can observe that sky130_vsdinv is added to our design.
 
